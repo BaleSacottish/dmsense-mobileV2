@@ -1,11 +1,16 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
+
+import Header from '../../components/header'
 
 const ketone = () => {
   return (
+    <SafeAreaView style={{flex:1}}>
+    <Header/>
     <View>
-      <Text>ketone</Text>
+      <Text>ke</Text>
     </View>
+  </SafeAreaView>
   )
 }
 

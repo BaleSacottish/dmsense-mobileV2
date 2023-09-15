@@ -5,6 +5,8 @@ import { TransitionSpecs } from '@react-navigation/stack';
 import { createStackNavigator } from '@react-navigation/stack';
 // import 'react-native-gesture-handler';
 
+import Page2 from './screens/home/sugar/page2';
+
 import Tabs from './tabs';
 import colors from '../src/contants/colors';
 
@@ -21,11 +23,20 @@ const Theme = {
 const Navigation = () => {
   return (
     <NavigationContainer theme={Theme}>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          presentation: 'modal',
+          transitionSpec: {
+            open: TransitionSpecs.BottomSheetSlideInSpec,
+            close: TransitionSpecs.BottomSheetSlideOutSpec,
+          }
+        }}>
 
-        
-      
+
+
         <Stack.Screen name='Tabs' component={Tabs} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   )

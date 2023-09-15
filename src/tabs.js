@@ -1,18 +1,24 @@
-import { View, TouchableOpacity, Text } from 'react-native'
-import React from 'react'
+import { View, TouchableOpacity, Text,Animated,StyleSheet } from 'react-native'
+import React,{useState} from 'react'
 
 import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { StackScreenProps } from '@react-navigation/stack';
 
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import colors from '../src/contants/colors';
+import {useTheme} from 'react-native-paper';
 
 import Account from './screens/home/account';
 import Home from './screens/home/home';
 import ketone from './screens/home/ketone';
 import sugar from './screens/home/sugar';
 
+
 const Tab = createBottomTabNavigator();
+
+const colours = ['#fff','red']
+const getColour = () =>[Math.floor(Math.random() * colors.length)];
+
 
 /**
  * 
@@ -26,11 +32,11 @@ const Tabs = ({ navigation, route }) => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#FFF',
+          backgroundColor: '#1631C2',
         }
       }}
     >
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home}  />
       <Tab.Screen name="sugar" component={sugar} />
       <Tab.Screen name="ketone" component={ketone} />
 
@@ -41,29 +47,37 @@ const Tabs = ({ navigation, route }) => {
 }
 
 
-const TabBar = ({ state, descriptors, navigation }) => {
+const TabBar = ({ state, descriptors, navigation,focused }) => {
+
+ 
+
+  const [color, setColour] = useState(getColour());
+  const handleClick = () => {setColour(getColour());}
+
+
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 12, backgroundColor: '#1631C2' }}>
-      <View style={{alignItems:'center',backgroundColor:'#fff'}}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 12,  backgroundColor:'#1631C2'}}>
+     
         <TouchableOpacity
           activeOpacity={0.75}
           onPress={() => navigation.navigate('Home')}
-          style={{ padding: 10,alignItems:'center' }}
+          style={{ padding: 10,alignItems:'center',borderRadius:10,}}
         >
+          
           <Ionicon
             name={"home"}
             size={24}
-            color={colors.black}
+            color={colors.black}  
           />
           <Text>หน้าหลัก</Text>
         </TouchableOpacity>
-      </View>
+      
 
-      <View style={{alignItems:'center', flexDirection:'row',backgroundColor:'#fff'}}>
+      
       <TouchableOpacity
         activeOpacity={0.75}
         onPress={() => navigation.navigate('sugar')}
-        style={{ padding: 10,alignItems:'center', }}
+        style={{ padding: 10,alignItems:'center',borderRadius:10 }}
       >
         <Ionicon
           name={"water"}
@@ -72,8 +86,8 @@ const TabBar = ({ state, descriptors, navigation }) => {
         />
         <Text>วัดน้ำตาล</Text>
       </TouchableOpacity>
-      </View>
-      <View style={{alignItems:'center', flexDirection:'row',backgroundColor:'#fff'}}>
+      
+      
       <TouchableOpacity
         activeOpacity={0.75}
         onPress={() => navigation.navigate('ketone')}
@@ -84,10 +98,10 @@ const TabBar = ({ state, descriptors, navigation }) => {
           size={24}
           color={colors.black}
         />
-      <Text>วัดน้ำตาล</Text>
+      <Text>วัดคีโต</Text>
       </TouchableOpacity>
-      </View>
-      <View style={{alignItems:'center', flexDirection:'row',backgroundColor:'#fff'}}>
+      
+      
       <TouchableOpacity
         activeOpacity={0.75}
         onPress={() => navigation.navigate('Account')}
@@ -98,11 +112,21 @@ const TabBar = ({ state, descriptors, navigation }) => {
           size={24}
           color={colors.black}
         />
-        <Text>วัดน้ำตาล</Text>
+        <Text>โปรไฟล์</Text>
       </TouchableOpacity>
-</View>
+
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  appbuttonbackground:{
+    padding: 10,
+    alignItems:'center',
+    borderRadius:10,
+    backgroundColor:'#fff'
+    
+  }
+})
 
 export default Tabs;

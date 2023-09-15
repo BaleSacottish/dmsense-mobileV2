@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native'
 
-const globalStyles = StyleSheet.create({
+const globalStyles2 = StyleSheet.create({
     welcome_padding: {
         flex: 1,
-        paddingHorizontal: 32,
-        paddingVertical: 32,
+        paddingHorizontal: 10,
+        paddingVertical: 1,
         backgroundColor:'#F6F5FA',
+        
         
     },
 
@@ -40,4 +41,4 @@ const globalStyles = StyleSheet.create({
     }
 })
 
-export default globalStyles;
+export default globalStyles2;
