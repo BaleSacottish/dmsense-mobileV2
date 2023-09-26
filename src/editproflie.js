@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Proflie = () => {
+const EditProflie = () => {
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
             <View style={{ paddingHorizontal: 25 ,marginBottom: 20}}>
@@ -65,7 +65,7 @@ const Proflie = () => {
                             fontWeight: '700',
                             fontSize: 16,
                             color: '#FFD3E9'
-                        }}>แก้ไขโปรไฟล์</Text>
+                        }}>ตกลง</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -84,7 +84,7 @@ const Proflie = () => {
                             fontWeight: '700',
                             fontSize: 16,
                             color: '#1631C2'
-                        }}>เปลี่ยนรหัส</Text>
+                        }}>ยกเลิก</Text>
                 </TouchableOpacity>
 
             </View>
@@ -128,4 +128,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Proflie
+export default EditProflie
