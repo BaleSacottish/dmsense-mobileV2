@@ -12,6 +12,8 @@ const Welcome = () => {
         </View>
       </View>
 
+
+
       <View style={{ alignItems: 'center'  }}>
         <TouchableOpacity
           onPress={() => { }}
