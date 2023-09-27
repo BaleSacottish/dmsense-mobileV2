@@ -96,16 +96,16 @@ const sugar = ({ navigation, route }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Header />
-      <View style={{ flex: 1, height: height - 240, backgroundColor: colors.pink_2, }}>
+      {/* <View style={{ flex: 1, height: height - 240, backgroundColor: colors.pink_2, }}> */}
         <ScrollView>
-          <RenderPage />
+          {/* <RenderPage /> */}
           <View
             style={{
               ...globalStyles.welcome_padding,
             }}>
             
-            
-            {
+            <Page1/>
+            {/* {
               pageIndex == 0 ? (
                 <Page1 value={dataPage1} onChanged={(value) => onChanged(value, 1)} />
               ) :
@@ -116,11 +116,29 @@ const sugar = ({ navigation, route }) => {
                     <Page3 value={dataPage3} onChanged={(value) => onChanged(value, 3)} />
                   ) : null
 
-            }
+            } */}
+             {/* <Botton
+                        text='ถัดไป'
+                        textStyle={{
+                            alignSelf: 'center'
+                        }}
+                        containerStyle={{
+                            paddingHorizontal: 16,
+                            marginTop: 80,
+                            flexDirection: 'column',
+                            alignSelf: 'center',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: 220
+                        }}
+                        activeOpacity={0.75}
+                        onPress = {() => navigation.navigate('Page2')}
+                    >
+                </Botton> */}
            
           </View>
         </ScrollView>
-      </View>
+      {/* </View> */}
     </SafeAreaView>
 
   )

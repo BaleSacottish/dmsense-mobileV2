@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const globalStyles2 = StyleSheet.create({
     welcome_padding: {
         flex: 1,
-        paddingHorizontal: 10,
+        paddingHorizontal: 25,
         paddingVertical: 1,
         backgroundColor:'#F6F5FA',
         
