@@ -1,9 +1,26 @@
-import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
+import {
+    SafeAreaView,
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    StyleSheet,
+    TextInput
+} from 'react-native'
+
+
+import Header from '../../../components/header'
+import colors from '../../../contants/colors'
+import { fontFamily } from '../../../contants/fonts'
+import Botton from '../../../components/button'
+
 import React from 'react'
 const Login = () => {
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <View style={{ paddingHorizontal: 25 }}>
+        <SafeAreaView style={{ flex: 1, }}>
+            <Header />
+            <View style={{ padding: 20 }}>
+
                 <View style={{ alignItems: 'center' }}>
                     <Text
                         style={{
@@ -33,10 +50,10 @@ const Login = () => {
                 borderBottomWidth: 1,
                 marginBottom: 200,
             }}>
-                <TextInput style={{ paddingHorizontal: 150 }}></TextInput>
+                <TextInput style={{ paddingHorizontal: 80 }}></TextInput>
             </View>
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
                 onPress={() => { }}
                 style={{
                     backgroundColor: '#FFFFFF',
@@ -52,7 +69,29 @@ const Login = () => {
                         fontSize: 16,
                         color: '#FFD3E9'
                     }}>ถัดไป</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+
+            <Botton
+                text='ถัดไป'
+                textStyle={{
+                    alignSelf: 'center',
+                }}
+                containerStyle={{
+                    paddingHorizontal: 16,
+                    marginTop: 10,
+                    marginBottom: 40,
+                    flexDirection: 'column',
+                    alignSelf: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 220
+                }}
+                activeOpacity={0.75}
+                onPress={() => navigation.navigate('Login')}
+            >
+            </Botton>
+
+
         </SafeAreaView >
     )
 }

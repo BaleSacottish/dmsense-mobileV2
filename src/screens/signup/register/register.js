@@ -1,8 +1,20 @@
-import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
+import {
+    SafeAreaView,
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    StyleSheet,
+    TextInput
+} from 'react-native'
 import React from 'react'
-const Register = () => {
+
+import Header from '../../../components/header';
+
+const Register = ({ navigation, props }) => {
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Header/>
             <View style={{ paddingHorizontal: 25 }}>
                 <View style={{ alignItems: 'center' }}>
                     <Text
@@ -56,4 +68,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default Register;

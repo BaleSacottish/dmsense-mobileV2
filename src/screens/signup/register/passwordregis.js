@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 const inputs = Array(6).fill('')
 let newInputIndex = 0
+
 const Testpassword = () => {
     const input = useRef()
     const [PASS, setPASS] = useState({ 0: '', 1: '', 2: '', 3: '', 4: '', 5: '' })
