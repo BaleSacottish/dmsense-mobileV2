@@ -1,6 +1,5 @@
 import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Dimensions, TextInput } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import Logo from '../src/assets/logo.png'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons'
 const inputs = Array(6).fill('')
