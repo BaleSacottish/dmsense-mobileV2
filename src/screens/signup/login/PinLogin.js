@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { ImageBackground, SafeAreaView, StatusBar, Text, View, StyleSheet,TouchableOpacity} from "react-native"
 import ReactNativePinView from "react-native-pin-view"
 
-const PassWordReg = () => {
+const PinLogin = () => {
     const pinView = useRef(null)
     const [showRemoveButton, setShowRemoveButton] = useState(false)
     const [enteredPin, setEnteredPin] = useState("")
@@ -31,7 +31,7 @@ const PassWordReg = () => {
                             fontSize: 24,
                             color: '#1631C2',
                             marginBottom: 5,
-                        }}>ลงทะเบียนใหม่</Text>
+                        }}>เข้าสู่ระบบ</Text>
                 </View>
                 <Text
                     style={{
@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default PassWordReg
+export default PinLogin

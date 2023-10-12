@@ -10,7 +10,7 @@ import find_device from './screens/bluetooth/find_device';
 
 // Register Screen
 import Register from './screens/signup/register/register';
-import Question from './screens/signup/register/question';
+import Question from './screens/signup/register/question/page1';
 import Login from './screens/signup/login/login';
 import Welcome from './welcome';
 

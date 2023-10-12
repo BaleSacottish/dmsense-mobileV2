@@ -2,10 +2,13 @@ import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, Keyboard
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import RadioForm from 'react-native-simple-radio-button'
+import { questionData } from './component/questions'
+
 
 
 
 const Question = () => {
+    const [currentIndex , setCurrentIndex] = useState(0)
 
     const [value, setValue] = useState(0);
     const [selectedRadio, setSelectedRadio] = useState(1)
@@ -28,7 +31,7 @@ const Question = () => {
                         fontSize: 15,
                         color: '#1631C2',
                         marginBottom: 30,
-                    }}> 1/10 </Text>
+                    }}> { currentIndex + '/' + questionData.length} </Text>
 
                     <Text style={{
                         textAlign: 'center',
