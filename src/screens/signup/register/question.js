@@ -1,134 +1,108 @@
-import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Dimensions, TextInput } from 'react-native'
+import {
+    SafeAreaView,
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    StyleSheet,
+    KeyboardAvoidingView,
+    Dimensions,
+    TextInput
+} from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import RadioForm from 'react-native-simple-radio-button'
 
+import globalStyles from '../../../contants/globalStyles'
+import Header2 from '../../../components/header2'
+import colors from '../../../contants/colors'
+import { fontFamily, fontSize } from '../../../contants/fonts'
+import Botton from '../../../components/button'
 
 
-const Question = () => {
 
-    const [value, setValue] = useState(0);
-    const [selectedRadio, setSelectedRadio] = useState(1)
 
-    const item = [
-        { label: "คำตอบ คำตอบ คำตอบ คำตอบ  ", value: 0 },
-        { label: "something", value: 1 },
-        { label: "something", value: 2 },
-    ]
+
+
+/**
+   * 
+   * @param {object} changed 
+   * @param {1|2|3|4} page 
+   */
+
+const Question = ({ navigation }) => {
+
+   
+
+
+
+    const RenderPage = () => {
+        return (
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 36, paddingVertical: 24 }}>
+                <TouchableOpacity
+                    style={[{ ...styles.tab_page }, pageIndex == 0 ? { backgroundColor: colors.blue } : { ...globalStyles.shadow_5 }]}
+                    onPress={() => setPageIndex(0)}
+                />
+                <TouchableOpacity
+                    style={[{ ...styles.tab_page }, pageIndex == 1 ? { backgroundColor: colors.blue } : { ...globalStyles.shadow_5 }]}
+                    onPress={() => setPageIndex(1)}
+                />
+                <TouchableOpacity
+                    style={[{ ...styles.tab_page }, pageIndex == 2 ? { backgroundColor: colors.blue } : { ...globalStyles.shadow_5 }]}
+                    onPress={() => setPageIndex(2)}
+                />
+                <TouchableOpacity
+                    style={[{ ...styles.tab_page }, pageIndex == 3 ? { backgroundColor: colors.blue } : { ...globalStyles.shadow_5 }]}
+                    onPress={() => setPageIndex(3)}
+                />
+
+            </View>
+        )
+    }
+
+    /**
+  * 
+  * @param {object} changed 
+  * @param {1|2|3|4} page 
+  */
 
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-            <View style={{ paddingHorizontal: 25, marginBottom: 50 }}>
-                <View style={{ alignItems: 'center' }}>
-
-                    <Text style={{
-                        textAlign: 'center',
-                        fontWeight: '500',
-                        fontSize: 15,
-                        color: '#1631C2',
-                        marginBottom: 30,
-                    }}> 1/10 </Text>
-
-                    <Text style={{
-                        textAlign: 'center',
-                        fontWeight: '700',
-                        fontSize: 24,
-                        color: '#1631C2',
-                        marginBottom: 30,
-                    }}>
-                        มาตอบคำถามสุขภาพกัน
-                    </Text>
-
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{
-                            color: '#0F7FAB',
-                            fontWeight: 'bold',
-                            fontSize: 16,
-                            marginBottom: 30,
-
-                        }}>
-                            คำถาม คำถาม คำถาม
-                            คำถาม คำถาม คำถาม
-                            คำถาม คำถาม คำถาม
-                            คำถาม คำถาม คำถาม
-                            คำถาม คำถาม คำถาม
-                            คำถาม คำถาม คำถาม
-                        </Text>
-
-                    </View>
+        <SafeAreaView style={{ flex: 1, }}>
+            <Header2 />
+            <View style={{
+                ...globalStyles.welcome_padding,
+                justifyContent: 'space-between',
+            }}>
+              
 
 
-                </View>
-                {/* <RadioForm
-                    radio_props={item}
-                    onPress={(value) => setValue(value)}
-                    buttonColor="#0F7FAB"
-                    labelColor="#0F7FAB"
-                    selectedButtonColor="#0F7FAB"
-                    selectedLabelColor="#0F7FAB" /> */}
 
 
-                <TouchableOpacity onPress={() => setSelectedRadio(1)}>
-                    <View style={styles.wrapper}>
-                        <View style={styles.radio}>
-                            {selectedRadio == 1 ? <View style={styles.radioBg}></View> : null}
-                        </View>
-                        <Text style={styles.textTitleRadio}>test1</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => setSelectedRadio(2)}>
-                    <View style={styles.wrapper}>
-                        <View style={styles.radio}>
-                            {selectedRadio == 2 ? <View style={styles.radioBg}></View> : null}
-                        </View>
-                        <Text style={styles.textTitleRadio}>test2</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => setSelectedRadio(3)}>
-                    <View style={styles.wrapper}>
-                        <View style={styles.radio}>
-                            {selectedRadio == 3 ? <View style={styles.radioBg}></View> : null}
-                        </View>
-                        <Text style={styles.textTitleRadio}>test3</Text>
-                    </View>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => setSelectedRadio(4)}>
-                    <View style={styles.wrapper}>
-                        <View style={styles.radio}>
-                            {selectedRadio == 4 ? <View style={styles.radioBg}></View> : null}
-                        </View>
-                        <Text style={styles.textTitleRadio}>test4</Text>
-                    </View>
-                </TouchableOpacity>
-
+                <Botton
+                    text='ถัดไป'
+                    textStyle={{
+                        alignSelf: 'center',
+                        color: colors.pink,
+                    }}
+                    containerStyle={{
+                        backgroundColor: colors.pink_2,
+                        paddingHorizontal: 16,
+                        marginTop: 10,
+                        marginBottom: 40,
+                        flexDirection: 'column',
+                        alignSelf: 'center',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 220
+                    }}
+                    activeOpacity={0.75}
+                    onPress={() => navigation.navigate('Login')}
+                >
+                </Botton>
 
 
             </View>
-
-            <View style={{ alignItems: 'center' }}>
-                <TouchableOpacity
-                    onPress={() => { }}
-                    style={{
-                        backgroundColor: '#FFFFFF',
-                        padding: 20,
-                        borderRadius: 25,
-                        marginBottom: 30,
-                        width: 250,
-                    }}>
-                    <Text
-                        style={{
-                            textAlign: 'center',
-                            fontWeight: '700',
-                            fontSize: 16,
-                            color: '#FFD3E9'
-                        }}>ตอบ</Text>
-                </TouchableOpacity>
-            </View>
-
         </SafeAreaView>
 
     )
@@ -179,6 +153,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flexDirection: 'row',
         alignItems: 'center',
+        marginTop: 5
     },
     radioBg: {
         width: 17,

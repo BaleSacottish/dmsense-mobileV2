@@ -24,7 +24,7 @@ const find_device = () => {
           marginTop: '10%'
         }}>เชื่อมต่ออุปกรณ์</Text>
         {/* Animetion Loading Device */}
-        <Loadedbuletooth/>
+       <Loadedbuletooth/>
       </View>
     </SafeAreaView>
 

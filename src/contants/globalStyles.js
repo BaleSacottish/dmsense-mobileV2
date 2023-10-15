@@ -6,7 +6,7 @@ const globalStyles = StyleSheet.create({
         paddingHorizontal: 32,
         paddingVertical: 32,
         backgroundColor:'#F6F5FA',
-        
+        padding:10
     },
 
     screen_padding: {

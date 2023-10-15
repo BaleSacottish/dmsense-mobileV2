@@ -15,6 +15,7 @@ import Account from './screens/home/account';
 import Home from './screens/home/home';
 import ketone from './screens/home/ketone';
 import sugar from './screens/home/sugar';
+import Proflie from './screens/account/proflie';
 
 import Loadedbuletooth from './components/loadedbuletooth';
 
@@ -31,6 +32,7 @@ import Kpage3 from './screens/home/ketone/kpage3';
 const Tab = createBottomTabNavigator();
 const Sugartab = createStackNavigator();
 const Ketonetab = createStackNavigator();
+const Profiletab = createStackNavigator();
 
 const colours = ['#fff', 'red']
 const getColour = () => [Math.floor(Math.random() * colors.length)];
@@ -90,7 +92,7 @@ const Tabs = ({ navigation, route }) => {
           ),
         }}
       />
-      <Tab.Screen name="Account" component={Account}
+      <Tab.Screen name="Account" component={Proflie}
         options={{
           tabBarLabelStyle:({fontSize:12,marginBottom:10}),
           tabBarLabel: 'โปรไฟล์',

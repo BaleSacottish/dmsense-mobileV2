@@ -101,7 +101,8 @@ const Home = ({ navigation, route }) => {
                   alignSelf:'center',
                   alignItems:'center',
                   justifyContent:'center',
-                  width:220
+                  width:220,
+                  marginBottom:40
                 }}
                 activeOpacity={0.75}
                 onPress={() => { }}

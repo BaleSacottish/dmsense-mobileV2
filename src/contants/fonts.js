@@ -2,8 +2,9 @@ const adjustFontSize = 2
 
 const fontSize = {
   maesure: 64 - adjustFontSize,
-  title: 32 - adjustFontSize,
-  subTitle: 24 - adjustFontSize,
+  title:24 - adjustFontSize,
+  subTitle: 22 - adjustFontSize,
+  titleboty: 20 - adjustFontSize,
   body: 18- adjustFontSize,
   subBody: 16- adjustFontSize,
   small: 12- adjustFontSize,

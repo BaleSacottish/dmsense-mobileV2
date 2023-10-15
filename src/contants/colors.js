@@ -1,4 +1,5 @@
 const colors = {
+    white:'#fff',
     blue:'#1631C2',
     // blue: '#0F7FAB',
     blue_transparent_1: '#809BD0',

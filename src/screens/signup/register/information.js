@@ -1,4 +1,17 @@
-import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Dimensions, TextInput, Platform, Button, Picker } from 'react-native'
+import {
+    SafeAreaView,
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    StyleSheet,
+    KeyboardAvoidingView,
+    Dimensions,
+    TextInput,
+    Platform,
+    Button,
+    Picker
+} from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import { useNavigation } from '@react-navigation/native'
@@ -8,7 +21,14 @@ import SelectDropdown from 'react-native-select-dropdown'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { Dropdown } from 'react-native-element-dropdown';
 
-const Information = () => {
+
+import Botton from '../../../components/button'
+import colors from '../../../contants/colors'
+import { fontFamily, fontSize } from '../../../contants/fonts'
+import Header2 from '../../../components/header2'
+import globalStyles from '../../../contants/globalStyles'
+
+const Information = ({ navigation, props }) => {
     const [dropdown, setDropdown] = useState(null);
 
     const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +40,7 @@ const Information = () => {
     ]
     const [selected, setSelected] = useState("")
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false)
-    const [selectedDate, setSelectedDate] = useState('      ตัวเลือก')
+    const [selectedDate, setSelectedDate] = useState('ตัวเลือก')
 
     const showDatePicker = () => {
         setDatePickerVisibility(true)
@@ -40,96 +60,106 @@ const Information = () => {
         hideDatePicker()
     }
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
-            <View style={{ paddingHorizontal: 25, marginBottom: 50 }}>
-                <View style={{ alignItems: 'center' }}>
-                    <Text style={{
-                        textAlign: 'center',
-                        fontWeight: '700',
-                        fontSize: 24,
-                        color: '#1631C2',
-                        marginBottom: 100,
-                    }}>
-                        กรุณากรอกข้อมูลส่วนตัว
-                    </Text>
+        <SafeAreaView style={{ flex: 1, }}>
+            <Header2 />
+            <View style={{
+                ...globalStyles.welcome_padding,
+                justifyContent: 'space-between',
+            }}>
 
-                </View>
-
-                <DateTimePicker
-                    isVisible={isDatePickerVisible}
-                    mode="date"
-                    onConfirm={handleDateConfirm}
-                    onCancle={hideDatePicker}
-                />
-
-                <View style={styles.underline}>
-                    <Text style={styles.textStyle} >วัน เดือน ปี เกิด</Text>
-                    <TouchableOpacity style={styles.dateStyle} onPress={() => { showDatePicker() }}>
-                        <Text style={styles.textStyle}>{selectedDate}</Text>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={styles.underline}>
-                    <Text style={styles.textStyle} >กรอกน้ำหนัก (กก)</Text>
-                    <TextInput style={styles.textinputStyle} placeholder='กรอก' placeholderTextColor="#809BD0" ></TextInput>
-                </View>
-
-                <View style={styles.underline}>
-                    <Text style={styles.textStyle} >ส่วนสูง (ซม)</Text>
-                    <TextInput style={styles.textinputStyle} placeholder='กรอก' placeholderTextColor="#809BD0" ></TextInput>
-                </View>
-
-                <View style={styles.underline}>
-                    <Text style={styles.textStyle} >เพศ</Text>
-                    <View style={{ paddingRight: 100 }} />
-                    <View style={{ paddingLeft: 40, width: 140 }}>
-                        <Dropdown
-                            data={items}
-                            selectedTextProps={{
-                                style: {
-                                    textAlign: 'left',
-                                    fontWeight: '700',
-                                    fontSize: 16,
-                                    width: 150,
-                                    color: '#809BD0'
-                                },
-                            }}
-                            labelField="label"
-                            valueField="value"
-                            label="Dropdown"
-                            placeholder="ตัวเลือก"
-                            itemTextStyle={styles.itemStyle}
-                            placeholderStyle={styles.textStyle}
-                            value={dropdown}
-                            onChange={item => {
-                                setDropdown(item.value);
-                                console.log('selected', item);
-                            }}
-                        />
-                    </View>
-                </View>
-            </View>
-
-            <View style={{ alignItems: 'center' }}>
-                <TouchableOpacity
-                    onPress={() => { }}
-                    style={{
-                        backgroundColor: '#FFFFFF',
-                        padding: 20,
-                        borderRadius: 25,
-                        marginBottom: 30,
-                        width: 250,
-                    }}>
-                    <Text
-                        style={{
+                <View style={{  marginBottom: 50 }}>
+                    <View style={{ alignItems: 'center' }}>
+                        <Text style={{
                             textAlign: 'center',
                             fontWeight: '700',
-                            fontSize: 16,
-                            color: '#FFD3E9'
-                        }}>ถัดไป</Text>
-                </TouchableOpacity>
-            </View>
+                            fontSize: 24,
+                            color: '#1631C2',
+                            marginBottom: 100,
+                        }}>
+                            กรุณากรอกข้อมูลส่วนตัว
+                        </Text>
 
+                    </View>
+
+                    <DateTimePicker
+                        isVisible={isDatePickerVisible}
+                        mode="date"
+                        onConfirm={handleDateConfirm}
+                        onCancle={hideDatePicker}
+                    />
+
+                    <View style={styles.underline}>
+                        <Text style={styles.textStyle} >วัน เดือน ปี เกิด</Text>
+                        <TouchableOpacity style={styles.dateStyle} onPress={() => { showDatePicker() }}>
+                            <Text style={styles.textStyle}>{selectedDate}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.underline}>
+                        <Text style={styles.textStyle} >กรอกน้ำหนัก (กก)</Text>
+                        <TextInput style={styles.textinputStyle} placeholder='กรอก' placeholderTextColor="#809BD0" ></TextInput>
+                    </View>
+
+                    <View style={styles.underline}>
+                        <Text style={styles.textStyle} >ส่วนสูง (ซม)</Text>
+                        <TextInput style={styles.textinputStyle} placeholder='กรอก' placeholderTextColor="#809BD0" ></TextInput>
+                    </View>
+
+                    <View style={styles.underline}>
+                        <Text style={styles.textStyle} >เพศ</Text>
+                        <View style={{ paddingRight: 100 }} />
+                        <View style={{ paddingLeft: 40, width: 140 }}>
+                            <Dropdown
+                                data={items}
+                                selectedTextProps={{
+                                    style: {
+                                        textAlign: 'left',
+                                        fontWeight: '700',
+                                        fontSize: 16,
+                                        width: 150,
+                                        color: '#809BD0'
+                                    },
+                                }}
+                                labelField="label"
+                                valueField="value"
+                                label="Dropdown"
+                                placeholder="ตัวเลือก"
+                                itemTextStyle={styles.itemStyle}
+                                placeholderStyle={styles.textStyle}
+                                value={dropdown}
+                                onChange={item => {
+                                    setDropdown(item.value);
+                                    console.log('selected', item);
+                                }}
+                            />
+                        </View>
+                    </View>
+                </View>
+
+
+                <Botton
+                    text='ถัดไป'
+                    textStyle={{
+                        alignSelf: 'center',
+                        color: colors.pink,
+                    }}
+                    containerStyle={{
+                        backgroundColor: colors.pink_2,
+                        paddingHorizontal: 16,
+                        marginBottom: 20,
+                        flexDirection: 'column',
+                        alignSelf: 'center',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: 220
+                    }}
+                    activeOpacity={0.75}
+                    onPress={() => navigation.navigate('Question')}
+                >
+                </Botton>
+
+
+            </View>
         </SafeAreaView>
 
     )
@@ -220,3 +250,4 @@ const styles = StyleSheet.create({
 })
 
 export default Information
+
