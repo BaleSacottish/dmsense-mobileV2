@@ -109,7 +109,7 @@ const QuestionPage1 = () => {
                          if (currentIndex <= question.length) {
                              listRef.current.scrollToIndex({
                                  animated: true,
-                                 index: currentIndex 
+                                 index: currentIndex
                              })
                          }
                      }}>

@@ -15,7 +15,7 @@ const QuestionItem = ({ data, selectedOption }) => {
                 }}>{data.question}</Text>
             </View>
 
-            {/* <FlatList
+            <FlatList
                 data={data.Options}
                 renderItem={({ item, index }) => {
                     return (
@@ -42,7 +42,7 @@ const QuestionItem = ({ data, selectedOption }) => {
                             }}> {item} </Text>
                         </TouchableOpacity>
                     )
-                }} /> */}
+                }} />
         </View>
     )
 }
