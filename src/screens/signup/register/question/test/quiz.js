@@ -14,15 +14,40 @@ import { React, useState } from 'react'
 import { questionData } from '../component/questions';
 import { Option } from 'antd/es/mentions';
 import colors from '../../../../../contants/colors';
+import DateTimePicker from 'react-native-modal-datetime-picker'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const Quiz = () => {
 
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [question, setQuestions] = useState(questionData)
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false)
+    const [selectedDate, setSelectedDate] = useState('      ตัวเลือก')
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true)
+    }
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false)
+    }
+
+    const handleDateConfirm = date => {
+        console.warn("A date has been picked: ", date)
+        const dt = new Date(date)
+        const x = dt.toISOString().split('T')
+        const x1 = x[0].split('-')
+        console.log(x1[2] + '/' + x1[1] + '/' + x1[0])
+        setSelectedDate(x1[2] + '/' + x1[1] + '/' + x1[0])
+        hideDatePicker()
+    }
+
+
     const [selectBt, setSelectBt] = useState("")
 
     const allQuestions = questionData
-    const [currentQuestion, setCurrentQuestion] = useState(1)
+    // const [currentQuestion, setCurrentQuestion] = useState(1)
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [currentOptionSelected, setCurrentOptionSelected] = useState(null)
     const [correctOption, setCorrectOption] = useState(null)
@@ -53,9 +78,6 @@ const Quiz = () => {
             setShowNextButton(false)
         }
     }
-
-
-
     const renderQuestion = () => {
         return (
             <View>
@@ -98,19 +120,21 @@ const Quiz = () => {
 
             <View style={{ alignItems: 'center' }}>
                 {allQuestions[currentQuestionIndex]?.Options.map(Option =>
+
                 (<View style={styles.mood}>
                     <View style={styles.wrapper}>
                         <TouchableOpacity style={styles.outter}
                             key={Option}
                             onPress={() => validateAnswer(setSelectBt(Option))}
-                            // onPress={() => setSelectBt(Option)}
-                            >
+                        // onPress={() => setSelectBt(Option)}
+                        >
                             {selectBt === Option && <View style={styles.inner} />}
                         </TouchableOpacity>
                         <Text style={styles.feeling}>{Option}</Text>
                     </View>
                 </View>
-                ))}
+                )
+                )}
 
                 {
 
@@ -172,6 +196,30 @@ const Quiz = () => {
             </View>
         )
     }
+    const renderDate = () => {
+        return (
+            <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
+                <View style={{ paddingHorizontal: 25, marginBottom: 50 }}>
+                    <View style={{ alignItems: 'center' }}>
+                        <DateTimePicker
+                            isVisible={isDatePickerVisible}
+                            mode="date"
+                            onConfirm={handleDateConfirm}
+                            onCancle={hideDatePicker}
+                        />
+                    </View>
+
+                    <View style={styles.underline}>
+                        <Text style={styles.textStyle} >วัน เดือน ปี เกิด</Text>
+                        <TouchableOpacity style={styles.dateStyle} onPress={() => { showDatePicker() }}>
+                            <Text style={styles.textStyle}>{selectedDate}</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </View>
+            </SafeAreaView>
+        )
+    }
     const renderNextButton = () => {
         if (showNextButton) {
             return (
@@ -229,6 +277,9 @@ const Quiz = () => {
                         {renderQuestion()}
                     </View>
 
+                    {/* this is date */}
+                    {/* {renderDate()} */}
+
                     {/* this is options */}
                     {renderOptions()}
 
@@ -276,6 +327,29 @@ const styles = StyleSheet.create({
         fontWeight: '700'
 
     },
+    underline: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderBottomColor: '#FFD3E9',
+        paddingBottom: 5,
+        marginBottom: 25
+    },
+    textStyle: {
+        textAlign: 'left',
+        fontWeight: '700',
+        fontSize: 17,
+        width: 150,
+        color: '#809BD0'
+    },
+    dateStyle: {
+        textAlign: 'right',
+        fontWeight: '700',
+        fontSize: 16,
+        width: 150,
+        color: '#809BD0',
+        marginHorizontal: 110
+    },
+
     /////////////////////////////////////////////////////////////////////
 })
 export default Quiz

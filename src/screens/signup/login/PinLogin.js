@@ -81,7 +81,7 @@ const PinLogin = () => {
                             }
                             // check password code for take password code for navigate //
                             if (key === "custom_left") {
-                                alert("Entered Pin: " + enteredPin)
+                                alert("Pin is : " + enteredPin)
                             }
                         }}
 
